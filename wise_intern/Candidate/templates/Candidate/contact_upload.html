@@ -8,7 +8,7 @@
     {% endfor %}
 {% else %}
 {{order}}
-<form method="post" enctype="multipart/form-data">
+<form method="post" enctype="multipart/form-data" style="padding-top:20px">
     {% csrf_token %}
     <label>Upload a file</label>
     <input type="file" name="file">

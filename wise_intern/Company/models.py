@@ -35,7 +35,7 @@ class Company(models.Model):
     contact_phone = models.CharField(max_length=100)
     contact_email = models.EmailField(max_length=100)
     company_status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='Active')
-    choice = models.CharField(max_length=20, choices=CHOICES, default='Fixed')
+    commercials = models.CharField(max_length=20, choices=CHOICES, default='Fixed')
     CTC_type = models.CharField(max_length=20, choices=CTC_TYPE, blank=True, help_text="Only required if 'Percentage' attributes are selected.")
     value = models.CharField(max_length=20)
     date_posted = models.DateTimeField(default=timezone.now)

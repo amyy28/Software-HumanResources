@@ -1,6 +1,41 @@
 {% extends "website/header.html" %}
 {% block content %}
     <h1 class="container" style="text-align:center">Welcome to the dashboard, let us serve you.</h1>
+ <div style="padding-top:140px; padding-left:200px">
+    <table style="width:80%">
+  <tr>
+    <th>Total Companies:</th>
+    <td>{{ companies_active }}</td>
+  </tr>
+  <tr>
+    <th>Total Job openings:</th>
+    <td>{{ job_openings }}</td>
+  </tr>
+  <tr>
+    <th>Total Candidates:</th>
+    <td>{{ candidates }}</td>
+  </tr>
+   <tr>
+    <th>Total Candidates Active:</th>
+    <td>{{ candidates_active }}</td>
+  </tr>
+</table>
+     </div>
+<h6 style="padding-top:160px; padding-left:850px">Made with ❤ by Wisehire.co 😃</h6>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  color:green;
+}
+td{
+  color:brown;
+}
+th, td {
+  padding: 5px;
+  text-align: left;
+}
+</style>
 {% endblock content %}
 
 

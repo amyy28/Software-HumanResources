@@ -29,7 +29,7 @@ def company(request):
 
 class CompanyCreateView(LoginRequiredMixin, CreateView):
     model = Company
-    fields = ['company_id', 'company_name', 'city', 'state', 'contact_person', 'contact_phone', 'contact_email', 'company_status', 'CTC_type', 'value', 'choice']
+    fields = ['company_id', 'company_name', 'city', 'state', 'contact_person', 'contact_phone', 'contact_email', 'company_status', 'CTC_type', 'value', 'commercials']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -41,7 +41,7 @@ class CompanyDetailView(LoginRequiredMixin, DetailView):
 
 class CompanyUpdateView(LoginRequiredMixin, UpdateView):
     model = Company
-    fields = ['company_id', 'company_name', 'city', 'state', 'contact_person', 'contact_phone', 'contact_email', 'company_status', 'CTC_type', 'value', 'choice']
+    fields = ['company_id', 'company_name', 'city', 'state', 'contact_person', 'contact_phone', 'contact_email', 'company_status', 'CTC_type', 'value', 'commercials']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
