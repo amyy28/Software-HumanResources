@@ -1,0 +1,66 @@
+{% extends "website/header.html" %}
+{% block content %}
+    <h2 class="container">Here's the list of companies!</h2>
+    <div style="padding-left:1000px">
+    <a href="{% url 'company-create' %}" class="btn btn-secondary btn-sm mt-1 mb-1">Add new +</a>
+      </div>
+    <div class="container" style="padding-top:20px">
+      <form action=".">
+      <input type="text" placeholder="Search.." name="search">
+    </form>
+   <style>
+  input[type=text] {
+  width: 120px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding: 8px 10px 12px 20px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+  width: 100%;
+}
+</style>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Date Posted</th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Jobs</th>
+        <th>Number of Candidates</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for company in companies %}
+      <tr>
+        <td>{{ company.date_posted|date:"F d, Y" }}</td>
+        <td>{{ company.company_id }}</td>
+        <td><a class="article-title" href="{% url 'company-detail' company.id %}">{{ company.company_name }}</a></td>
+        <td>{{ company.city }}</td>
+        <td>{{ company.state }}</td>
+        <td>{{ company.njobs }}</td>
+        <td>{{ company.ncandidates }}</td>
+        <td>
+          {% if company.company_status == 'Active' %}
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" style="background-color:green; color:white">Active</a>
+          {% else %}
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" style="background-color:#cc0000; color:white">Inactive</a>
+          {% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+    </div>
+
+{% endblock content %}

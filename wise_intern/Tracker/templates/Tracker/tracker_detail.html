@@ -1,0 +1,44 @@
+{% extends "website/header.html" %}
+{% block content %}
+  <div style="padding-left:930px">
+  <a href="{% url 'tracker-page' %}"><i class="fa fa-arrow-left" style="font-size:24px; color:grey; padding-right:20px"></i></a>
+  <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'tracker-update' object.id %}">Update</a>
+  <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'tracker-delete' object.id %}">Delete</a>
+  </div>
+  <div class="container" style="padding-top:20px">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Date Posted</th>
+        <th>Candidate Name</th>
+        <th>Company Name</th>
+        <th>Position</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Current CTC</th>
+        <th>Expected CTC</th>
+        <th>Notice Period</th>
+        <th>Status</th>
+        <th>Relevant Experience</th>
+        <th>Total Experience</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ object.date_posted|date:"F d, Y" }}</td>
+        <td>{{ object.candidate_name }}</td>
+        <td>{{ object.company_applied }}</td>
+        <td>{{ object.position_applied }}</td>
+        <td></td>
+        <td></td>
+        <td>{{ object.current_CTC }}</td>
+        <td>{{ object.expected_CTC }}</td>
+        <td>{{ object.notice_period }}</td>
+        <td>{{ object.candidate_status }}</td>
+        <td>{{ object.relevant_experience }}</td>
+        <td>{{ object.total_experience }}</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+{% endblock content %}

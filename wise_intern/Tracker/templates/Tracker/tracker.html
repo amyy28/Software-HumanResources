@@ -1,0 +1,68 @@
+{% extends "website/header.html" %}
+{% block content %}
+    <h2 class="container">Here's your trackers list!</h2>
+    <div class="container" style="padding-top:20px">
+      <form action=".">
+      <input type="text" placeholder="Search.." name="search">
+    </form>
+   <style>
+  input[type=text] {
+  width: 120px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding: 8px 10px 12px 20px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+  width: 100%;
+}
+</style>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Date Posted</th>
+        <th>Candidate</th>
+        <th>Company</th>
+        <th>Position</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Current CTC</th>
+        <th>Expected CTC</th>
+        <th>Notice Peroid</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for track in tracker %}
+      <tr>
+        <td>{{ track.date_posted|date:"F d, Y" }}</td>
+        <td>{{ track.candidate_name }}</td>
+        <td><a class="article-title" href="{% url 'tracker-detail' track.id %}">{{ track.company_applied }}</a></td>
+        <td>{{ track.position_applied }}</td>
+        <td>{{ track.phone }}</td>
+        <td>{{ track.email }}</td>
+        <td>{{ track.current_CTC }}</td>
+        <td>{{ track.expected_CTC }}</td>
+        <td>{{ track.notice_period }}</td>
+        <td>{{ track.candidate_status }}</td>
+        <td>{% if track.candidate_status == 'Interview Scheduled' %}
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" style="background-color:green">Scheduled</a>
+            {% else %}
+          <a href="{% url 'interview-create' %}?tracker_id={{ track.id }}" class="btn btn-secondary btn-sm mt-1 mb-1" style="background-color:green">Schedule</a>
+          {% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+    </div>
+
+{% endblock content %}

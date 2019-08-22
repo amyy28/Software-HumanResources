@@ -1,0 +1,69 @@
+{% extends "website/header.html" %}
+{% block content %}
+    <h2 class="container">Here's the list of jobs!</h2>
+     <div style="padding-left:1000px">
+    <a href="{% url 'job-create' %}" class="btn btn-secondary btn-sm mt-1 mb-1">Add new +</a>
+      </div>
+    <div class="container" style="padding-top:20px">
+      <form action=".">
+      <input type="text" placeholder="Search.." name="search">
+    </form>
+   <style>
+  input[type=text] {
+  width: 120px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding: 8px 10px 12px 20px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+  width: 100%;
+}
+</style>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Date Posted</th>
+        <th>Job ID</th>
+        <th>Position</th>
+        <th>Company</th>
+        <th>JD link</th>
+        <th>Job Type</th>
+        <th>Submission Deadline</th>
+        <th>Number of candidates</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for job in jobs %}
+      <tr>
+        <td>{{ job.date_posted|date:"F d, Y" }}</td>
+        <td>{{ job.job_id }}</td>
+        <td><a class="article-title" href="{% url 'job-detail' job.id %}">{{ job.position }}</a></td>
+        <td>{{ job.company }}</td>
+        <td>{{ job.JD_link }}</td>
+        <td>{{ job.job_type }}</td>
+        <td>{{ job.submission_deadline|date:"F d, Y" }}</td>
+        <td></td>
+        <td>
+          {% if job.job_status == 'Open' %}
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" style="background-color:green; color:white">Open</a>
+          {% elif job.job_status == 'On-hold' %}
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" style="background-color:yellow; color:black">On-hold</a>
+          {% else %}
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" style="background-color:#cc0000; color:white">Closed</a>
+          {% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+    </div>
+{% endblock content %}

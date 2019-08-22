@@ -1,0 +1,61 @@
+{% extends "website/header.html" %}
+{% block content %}
+  <div class="container">
+    {% if object.company_status == 'Active' %}
+      <h3><span class="dot" style="height: 15px; width: 15px; background-color: green; border-radius: 50%; display: inline-block;"></span>
+    {% else %}
+      <h3><span class="dot" style="height: 15px; width: 15px; background-color: red; border-radius: 50%; display: inline-block;"></span>
+    {% endif %}
+    {{ object.company_name }}</h3>
+
+  </div>
+  <div style="padding-left:930px">
+  <a href="{% url 'company-list' %}"><i class="fa fa-arrow-left" style="font-size:24px; color:grey; padding-right:20px"></i></a>
+  <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'company-update' object.id %}">Update</a>
+  <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'company-delete' object.id %}">Delete</a>
+  </div>
+  <div class="container" style="padding-top:20px">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Date Posted</th>
+        <th>ID</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Contact Person</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ object.date_posted|date:"F d, Y" }}</td>
+        <td>{{ object.company_id }}</td>
+        <td>{{ object.city }}</td>
+        <td>{{ object.state }}</td>
+        <td>{{ object.contact_person }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  </div>
+  <div class="container" style="padding-top:20px">
+  <table class="table">
+    <thead>
+     <tr>
+       <th>Contact phone</th>
+       <th>Status</th>
+        <th>Contact email</th>
+        <th>Commercials</th>
+     </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ object.contact_phone }}</td>
+        <td>{{ object.company_status }}</td>
+        <td>{{ object.contact_email }}</td>
+        <td>{{ object.choice }}</td>
+      </tr>
+    </tbody>
+  </table>
+    </div>
+{% endblock content %}

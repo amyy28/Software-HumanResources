@@ -1,0 +1,64 @@
+{% extends "website/header.html" %}
+{% block content %}
+    <h2 class="container">Here's the list of candidates with their details!</h2>
+    <div style="padding-left:900px">
+      <a href="{% url 'candidate-create' %}" class="btn btn-secondary btn-sm mt-1 mb-1" style="background-color:grey">Add new +</a>
+    <a href="{% url 'contact_upload' %}" class="btn btn-secondary btn-sm mt-1 mb-1" style="background-color:pink; color:black">Upload CSV</a>
+      </div>
+    <form action="" style="padding-top:20px">
+      <input type="text" placeholder="Search.." name="search" id="search" value="{{search_term}}">
+    </form>
+   <style>
+  input[type=text] {
+  width: 120px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding: 8px 10px 12px 20px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+  width: 100%;
+}
+</style>
+
+
+
+  <table class="table" style="padding-top:100px">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Current Company</th>
+        <th>Current Location</th>
+        <th>Skills</th>
+        <th>New Experience</th>
+        <th>Action</th>
+
+      </tr>
+    </thead>
+    <tbody>
+    {% for candidate in candidates %}
+      <tr>
+        <td>{{ candidate.date_posted|date:"F d, Y" }}</td>
+        <td><a class="article-title" href="{% url 'candidate-detail' candidate.id %}">{{ candidate.candidate_name }}</a></td>
+        <td>{{ candidate.phone }}</td>
+        <td>{{ candidate.current_company }}</td>
+        <td>{{ candidate.current_location }}</td>
+        <td>{{ candidate.skills }}</td>
+        <td>{{ candidate.new_experience }}</td>
+        <td><a href="{% url 'tracker-create' %}?candidate_id={{ candidate.id }}" class="btn btn-secondary btn-sm mt-1 mb-1" style="background-color:green">Add to tracker</a></td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+    </div>
+{% endblock content %}
+

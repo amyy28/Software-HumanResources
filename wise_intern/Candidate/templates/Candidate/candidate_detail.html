@@ -1,0 +1,71 @@
+{% extends "website/header.html" %}
+{% block content %}
+  <div class="container">
+  <h3><a href="{% url 'candidate-list' %}"><i class="fa fa-hand-o-left" style="font-size:30px; color:grey"></i></a>
+    {{ object.candidate_name }}</h3>
+  </div>
+  <div style="padding-left:930px">
+  <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'candidate-update' object.id %}">Update</a>
+  <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'candidate-delete' object.id %}">Delete</a>
+  </div>
+  <div class="container" style="padding-top:20px">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>PAN</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ object.phone }}</td>
+        <td>{{ object.email }}</td>
+        <td>{{ object.PAN_number }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  </div>
+  <div class="container" style="padding-top:20px">
+  <table class="table">
+    <thead>
+     <tr>
+        <th>Experience</th>
+        <th>New Experience</th>
+        <th>Skills</th>
+     </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ candidate.experience }}</td>
+        <td>{{ candidate.new_experience }}</td>
+        <td>{{ candidate.skills }}</td>
+      </tr>
+    </tbody>
+  </table>
+    </div>
+
+
+  <div class="container" style="padding-top:20px">
+  <table class="table">
+    <thead>
+     <tr>
+       <th>Current company</th>
+       <th>Current Designation</th>
+        <th>Current location</th>
+        <th>Preferred location</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ object.current_company }}</td>
+        <td>{{ object.current_designation }}</td>
+        <td>{{ object.current_location }}</td>
+        <td>{{ object.preferred_location }}</td>
+      </tr>
+    </tbody>
+  </table>
+    </div>
+{% endblock content %}

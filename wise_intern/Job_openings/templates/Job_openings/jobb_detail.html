@@ -1,0 +1,39 @@
+{% extends "website/header.html" %}
+{% block content %}
+  <div style="padding-left:930px">
+  <a href="{% url 'jobs-list' %}"><i class="fa fa-arrow-left" style="font-size:24px; color:grey; padding-right:20px"></i></a>
+  <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'job-update' object.id %}">Update</a>
+  <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'job-delete' object.id %}">Delete</a>
+  </div>
+  <div class="container" style="padding-top:20px">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Date Posted</th>
+        <th>Job ID</th>
+        <th>Position</th>
+        <th>Company</th>
+        <th>Location</th>
+        <th>JD_link</th>
+        <th>Job Type</th>
+        <th>Submission Deadline</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ object.date_posted|date:"F d, Y" }}</td>
+        <td>{{ object.job_id }}</td>
+        <td>{{ object.position }}</td>
+        <td>{{ object.company }}</td>
+        <td>{{ object.location }}</td>
+        <td>{{ object.JD_link }}</td>
+        <td>{{ object.job_type }}</td>
+        <td>{{ object.submission_deadline|date:"F d, Y" }}</td>
+        <td>{{ object.job_status }}</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+{% endblock content %}

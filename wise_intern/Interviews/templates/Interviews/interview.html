@@ -1,0 +1,56 @@
+{% extends "website/header.html" %}
+{% block content %}
+    <h2 class="container">Here's the list of interviews!</h2>
+    <div class="container" style="padding-top:20px">
+      <form action=".">
+      <input type="text" placeholder="Search.." name="search">
+    </form>
+   <style>
+  input[type=text] {
+  width: 120px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding: 8px 10px 12px 20px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+  width: 100%;
+}
+</style>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Date Posted</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Client</th>
+        <th>Position</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Mode</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for interview in interviews %}
+      <tr>
+        <td>{{ interview.date_posted|date:"F d, Y" }}</td>
+        <td><a class="article-title" href="{% url 'interview-detail' interview.id %}">{{ interview.candidate }}</a></td>
+        <td>{{ interview.phone }}</td>
+        <td>{{ interview.client }}</td>
+        <td>{{ interview.position }}</td>
+        <td>{{ interview.interview_date }}</td>
+        <td>{{ interview.interview_time }}</td>
+        <td>{{ interview.mode }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+    </div>
+{% endblock content %}

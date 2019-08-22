@@ -1,0 +1,35 @@
+{% extends "website/header.html" %}
+{% block content %}
+  <div style="padding-left:930px">
+  <a href="{% url 'interview-page' %}"><i class="fa fa-arrow-left" style="font-size:24px; color:grey; padding-right:20px"></i></a>
+  <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'interview-update' object.id %}">Update</a>
+  <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'interview-delete' object.id %}">Delete</a>
+  </div>
+  <div class="container" style="padding-top:20px">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Date Posted</th>
+        <th>Interview Date</th>
+        <th>Time</th>
+        <th>Mode</th>
+        <th>Address</th>
+        <th>Map Link</th>
+        <th>Contact person</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ object.date_posted|date:"F d, Y" }}</td>
+        <td>{{ object.interview_date }}</td>
+        <td>{{ object.interview_time }}</td>
+        <td>{{ object.mode }}</td>
+        <td>{{ object.address }}</td>
+        <td>{{ object.map_link }}</td>
+        <td>{{ object.contact_person }}</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+{% endblock content %}
