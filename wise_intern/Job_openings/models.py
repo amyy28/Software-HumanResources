@@ -30,6 +30,7 @@ class Jobb(models.Model):
     job_status = models.CharField(max_length=100, choices=STATUS_CHOICES, default='Open')
     job_type = models.CharField(max_length=100, choices=JOB_TYPES, default='Full-time')
     date_posted = models.DateTimeField(default=timezone.now)
+    required_experience = models.CharField(max_length=100)
     #jobs = models.ForeignKey(Jobs, on_delete=models.CASCADE)
 
     def __str__(self):

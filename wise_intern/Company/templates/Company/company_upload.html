@@ -1,0 +1,19 @@
+{% extends "website/header.html" %}
+{% block content %}
+{% if messages %}
+    {% for message in messages %}
+        <div>
+            <strong>{{message|safe}}</strong>
+        </div>
+    {% endfor %}
+{% else %}
+{{order}}
+<form method="post" enctype="multipart/form-data" style="padding-top:20px">
+    {% csrf_token %}
+    <label>Upload a file</label>
+    <input type="file" name="file">
+    <p>Only accepts CSV files!</p>
+    <button type="submit">Upload</button>
+</form>
+{% endif %}
+{% endblock content %}

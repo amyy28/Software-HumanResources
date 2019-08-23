@@ -33,7 +33,7 @@ input[type=text]:focus {
   <table class="table" style="padding-top:100px">
     <thead>
       <tr>
-        <th>Date</th>
+        <th>Date Posted</th>
         <th>Name</th>
         <th>Phone</th>
         <th>Current Company</th>
@@ -53,7 +53,7 @@ input[type=text]:focus {
         <td>{{ candidate.current_company }}</td>
         <td>{{ candidate.current_location }}</td>
         <td>{{ candidate.skills }}</td>
-        <td>{{ candidate.new_experience }}</td>
+        <td></td>
         <td><a href="{% url 'tracker-create' %}?candidate_id={{ candidate.id }}" class="btn btn-secondary btn-sm mt-1 mb-1" style="background-color:green">Add to tracker</a></td>
       </tr>
     {% endfor %}

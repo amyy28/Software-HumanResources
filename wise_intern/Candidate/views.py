@@ -1,7 +1,6 @@
 from django.shortcuts import render
 import csv, io
 from django.contrib import messages
-from django.contrib.auth.decorators import permission_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Candidate
 from django.contrib.auth.decorators import login_required
@@ -12,7 +11,7 @@ from django.db.models import Q
 
 @login_required
 def candidate(request):
-    candidates = Candidate.objects.all()
+    candidates = Candidate.objects.all().order_by('-date_posted')
     search_term = ''
     if 'search' in request.GET:
         search_term = request.GET['search']
@@ -29,7 +28,7 @@ def candidate(request):
 
 class CandidateCreateView(LoginRequiredMixin, CreateView):
     model = Candidate
-    fields = ['candidate_name', 'experience' , 'new_experience', 'phone', 'email', 'PAN_number', 'current_company', 'current_location', 'preferred_location', 'skills', 'current_designation']
+    fields = ['candidate_name', 'experience_years' , 'experience_months', 'phone', 'comments', 'email', 'PAN_number', 'current_company', 'current_location', 'preferred_location', 'skills', 'current_designation']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -41,7 +40,7 @@ class CandidateDetailView(LoginRequiredMixin, DetailView):
 
 class CandidateUpdateView(LoginRequiredMixin, UpdateView):
     model = Candidate
-    fields = ['candidate_name', 'experience', 'phone', 'email', 'PAN_number', 'current_company', 'current_location', 'preferred_location', 'skills', 'current_designation', 'new_experience']
+    fields = ['candidate_name', 'experience_years', 'phone', 'comments', 'email', 'PAN_number', 'current_company', 'current_location', 'preferred_location', 'skills', 'current_designation', 'experience_months']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -52,7 +51,6 @@ class CandidateDeleteView(LoginRequiredMixin, DeleteView):
     success_url = '/dashboard/candidate/'
 
 
-@permission_required('admin.can_add_log_entry')
 def contact_upload(request):
     template = "Candidate/contact_upload.html"
 
@@ -74,8 +72,8 @@ def contact_upload(request):
     for column in csv.reader(io_string, delimiter=','):
         _, created = Candidate.objects.update_or_create(
             candidate_name = column[0],
-            experience = column[1],
-            new_experience = column[2],
+            experience_years = column[1],
+            experience_months = column[2],
             phone = column[3],
             email = column[4],
             PAN_number = column[5],
@@ -83,7 +81,8 @@ def contact_upload(request):
             current_location = column[7],
             preferred_location = column[8],
             current_designation = column[9],
-            skills = column[10],
+            comments=column[10],
+            skills = column[11],
         )
     context = {}
     return render(request, template, context)

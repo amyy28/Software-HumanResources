@@ -15,12 +15,12 @@ class Company(models.Model):
     )
     CHOICES = (
         ('Fixed', (
-            ('Fixed-Inclusive', 'Fixed-Inclusive'),
-            ('Fixed-Exclusive', 'Fixed-Exclusive'),
+            ('Fixed-Inclusive of all Taxes', 'Fixed-Inclusive of all Taxes'),
+            ('Fixed-Exclusive of all Taxes', 'Fixed-Exclusive of all Taxes'),
         )),
         ('Percentage', (
-            ('Percent-Inclusive', 'Percent-Inclusive'),
-            ('Percent-Exclusive', 'Percent-Exclusive'),
+            ('Percent-Inclusive of all Taxes', 'Percent-Inclusive of all Taxes'),
+            ('Percent-Exclusive of all Taxes', 'Percent-Exclusive of all Taxes'),
         )),
     )
     CTC_TYPE = (
@@ -35,9 +35,9 @@ class Company(models.Model):
     contact_phone = models.CharField(max_length=100)
     contact_email = models.EmailField(max_length=100)
     company_status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='Active')
-    commercials = models.CharField(max_length=20, choices=CHOICES, default='Fixed')
-    CTC_type = models.CharField(max_length=20, choices=CTC_TYPE, blank=True, help_text="Only required if 'Percentage' attributes are selected.")
-    value = models.CharField(max_length=20)
+    commercials = models.CharField(max_length=100, choices=CHOICES, default='Fixed')
+    CTC_type = models.CharField(max_length=100, choices=CTC_TYPE, blank=True, help_text="Only required if 'Percentage' attributes are selected.")
+    value = models.CharField(max_length=100, help_text="Enter ₹ for Fixed, % for Percentage")
     date_posted = models.DateTimeField(default=timezone.now)
     #jobs = models.ForeignKey(Jobs, on_delete=models.CASCADE)
 

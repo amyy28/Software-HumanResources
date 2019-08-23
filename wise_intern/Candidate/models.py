@@ -7,8 +7,8 @@ import datetime
 
 class Candidate(models.Model):
     candidate_name = models.CharField(max_length=100)
-    experience = models.CharField(max_length=100)
-    new_experience = models.CharField(max_length=100)
+    experience_years = models.CharField(max_length=100)
+    experience_months = models.CharField(max_length=100)
     phone = models.CharField(max_length=100)
     email = models.EmailField()
     PAN_number = models.CharField(max_length=100, null=True, blank=True)
@@ -16,6 +16,7 @@ class Candidate(models.Model):
     current_location = models.CharField(max_length=100)
     preferred_location = models.CharField(max_length=100)
     current_designation = models.CharField(max_length=100)
+    comments = models.CharField(max_length=100, null=True, blank=True)
     skills = models.CharField(max_length=1000,help_text="Add the skill followed by comma")
     date_posted = models.DateTimeField(default=timezone.now)
 

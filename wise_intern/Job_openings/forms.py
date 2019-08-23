@@ -12,7 +12,7 @@ class JobForm(ModelForm):
 
     class Meta:
         model = Jobb
-        fields = ['job_id', 'position', 'company', 'location', 'JD_link', 'job_status', 'budget', 'submission_deadline', 'job_type']
+        fields = ['job_id', 'position', 'company', 'location', 'JD_link', 'required_experience', 'job_status', 'budget', 'submission_deadline', 'job_type']
         widgets = {
             'submission_deadline': DateInput(),
         }

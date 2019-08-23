@@ -11,7 +11,7 @@ from django.db.models import Q
 
 @login_required
 def jobs(request):
-    jobs = Jobb.objects.all()
+    jobs = Jobb.objects.all().order_by('-date_posted')
     search_term = ''
     if 'search' in request.GET:
         search_term = request.GET['search']

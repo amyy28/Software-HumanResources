@@ -11,7 +11,7 @@ class Interview(models.Model):
     date_posted = models.DateTimeField(default=timezone.now)
     interview_time = models.CharField(max_length=100)
     mode = models.CharField(max_length=100)
-    address = models.CharField(max_length=100)
+    interview_address = models.CharField(max_length=100)
     map_link = models.CharField(max_length=100)
     contact_person = models.CharField(max_length=100)
     candidate = models.CharField(max_length=100)

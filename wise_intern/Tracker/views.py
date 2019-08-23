@@ -10,7 +10,10 @@ from Candidate.models import Candidate
 
 @login_required
 def tracker(request):
-    tracker = Tracker.objects.filter(user=request.user)
+    if request.user.is_superuser:
+        tracker = Tracker.objects.all().order_by('-date_posted')
+    else:
+        tracker = Tracker.objects.filter(user=request.user).order_by('-date_posted')
     search_term = ''
     if 'search' in request.GET:
         search_term = request.GET['search']

@@ -16,39 +16,41 @@
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="form-group col-md-3 mb-0">
-                        {{ form.current_CTC|as_crispy_field }}
+                    <div class="form-group col-md-4 mb-0">
+                        {{ form.candidate_name|as_crispy_field }}
                     </div>
-                    <div class="form-group col-md-3 mb-0">
-                        {{ form.expected_CTC|as_crispy_field }}
-                    </div>
-                    <div class="form-group col-md-3 mb-0">
+                    <div class="form-group col-md-4 mb-0">
                         {{ form.phone|as_crispy_field }}
-                    </div>
-                    <div class="form-group col-md-3 mb-0">
-                        {{ form.user|as_crispy_field }}
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-4 mb-0">
-                        {{ form.notice_period|as_crispy_field }}
-                    </div>
-                    <div class="form-group col-md-4 mb-0">
-                        {{ form.candidate_status|as_crispy_field }}
                     </div>
                     <div class="form-group col-md-4 mb-0">
                         {{ form.email|as_crispy_field }}
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="form-group col-md-4 mb-0">
-                        {{ form.relevant_experience|as_crispy_field }}
-                    </div>
-                    <div class="form-group col-md-4 mb-0">
+                    <div class="form-group col-md-6 mb-0">
                         {{ form.total_experience|as_crispy_field }}
                     </div>
+                    <div class="form-group col-md-6 mb-0">
+                        {{ form.relevant_experience|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="form-row">
                     <div class="form-group col-md-4 mb-0">
-                        {{ form.candidate_name|as_crispy_field }}
+                        {{ form.current_CTC|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-4 mb-0">
+                        {{ form.expected_CTC|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-4 mb-0">
+                        {{ form.notice_period|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6 mb-0">
+                        {{ form.candidate_status|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-6 mb-0">
+                        {{ form.user|as_crispy_field }}
                     </div>
                 </div>
             </fieldset>

@@ -27,6 +27,9 @@ input[type=text]:focus {
   <table class="table">
     <thead>
       <tr>
+        {% if request.user.is_superuser %}
+        <th>Recruiter</th>
+        {% endif %}
         <th>Date Posted</th>
         <th>Candidate</th>
         <th>Company</th>
@@ -43,9 +46,12 @@ input[type=text]:focus {
     <tbody>
     {% for track in tracker %}
       <tr>
-        <td>{{ track.date_posted|date:"F d, Y" }}</td>
-        <td>{{ track.candidate_name }}</td>
-        <td><a class="article-title" href="{% url 'tracker-detail' track.id %}">{{ track.company_applied }}</a></td>
+        {% if request.user.is_superuser %}
+        <td>{{ track.user }}</td>
+        {% endif %}
+        <td>{{ track.date_posted|date:"M d, Y" }}</td>
+        <td><a class="article-title" href="{% url 'tracker-detail' track.id %}">{{ track.candidate_name }}</a></td>
+        <td>{{ track.company_applied }}</td>
         <td>{{ track.position_applied }}</td>
         <td>{{ track.phone }}</td>
         <td>{{ track.email }}</td>

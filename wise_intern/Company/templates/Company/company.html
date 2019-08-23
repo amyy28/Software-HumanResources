@@ -1,8 +1,9 @@
 {% extends "website/header.html" %}
 {% block content %}
     <h2 class="container">Here's the list of companies!</h2>
-    <div style="padding-left:1000px">
+    <div style="padding-left:900px">
     <a href="{% url 'company-create' %}" class="btn btn-secondary btn-sm mt-1 mb-1">Add new +</a>
+          <a href="{% url 'company_upload' %}" class="btn btn-secondary btn-sm mt-1 mb-1" style="background-color:pink; color:black">Upload CSV</a>
       </div>
     <div class="container" style="padding-top:20px">
       <form action=".">

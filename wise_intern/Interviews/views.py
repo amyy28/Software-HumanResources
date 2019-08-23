@@ -14,7 +14,7 @@ from .forms import InterviewForm
 
 @login_required
 def interview(request):
-    interviews = Interview.objects.all()
+    interviews = Interview.objects.all().order_by('-date_posted')
     search_term = ''
     if 'search' in request.GET:
         search_term = request.GET['search']

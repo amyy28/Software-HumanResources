@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from Candidate.models import Candidate
 from Company.models import Company
+from Job_openings.models import Jobb
 from django.utils import timezone
 
 # Create your models here.
@@ -25,7 +26,7 @@ class Tracker(models.Model):
     company_applied = models.ForeignKey(Company, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     candidate_name = models.ForeignKey(Candidate, on_delete=models.CASCADE, related_name='candidates')
-    position_applied = models.CharField(max_length=100)
+    position_applied = models.ForeignKey(Jobb, on_delete=models.CASCADE)
     current_CTC = models.CharField(max_length=100)
     expected_CTC = models.CharField(max_length=100)
     notice_period = models.CharField(max_length=100)
