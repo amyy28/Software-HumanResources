@@ -1,27 +1,44 @@
-<h1>Hi there!!</h1>
-<h3>Your interview details:</h3>
+<h3>Hi {{ candidate.candidate }}.</h3>
+<h3>Greetings from Wisehire.Co !!!</h3>
+<p>This is further to your discussion with us, we are happy to inform you that you have been shortlisted for a face to face interview with our client <span style="color:green">{{ candidate.client }}.</span>
+</p>
+<p>Here are the details of your interview.</p>
 
 <table style="width:100%; padding-top:20px">
   <tr>
     <th>Date</th>
-    <td>Bill Gates</td>
+    <td>{{ candidate.interview_date }}</td>
   </tr>
   <tr>
     <th>Time</th>
-    <td>555 77 854</td>
+    <td>{{ candidate.interview_time }}</td>
   </tr>
   <tr>
-    <th>Address</th>
-    <td>555 77 855</td>
+    <th>Contact Person</th>
+    <td>{{ candidate.contact_person }}</td>
+  </tr>
+  <tr>
+    <th>Mode of Interview</th>
+    <td>{{ candidate.mode }}</td>
+  </tr>
+  <tr>
+    <th>Interview Address</th>
+    <td>{{ candidate.interview_address }}</td>
+  </tr>
+  <tr>
+    <th>Google Maps</th>
+    <td>{{ candidate.map_link }}</td>
   </tr>
 </table>
+
+<p style="color:red">Kindly acknowledge this mail and confirm your availability.</p>
+<p>Kindly carry a copy of your resume and this call letter for the scheduled interview and mention <span style="color:brown">Wisehire.Co</span> as your recruitment vendor on your resume.</p>
+
+<p>Best Regards,</p>
 
 <style>
 table, th, td {
   border: 1px solid black;
-  border-collapse: collapse;
-}
-th, td {
   padding: 5px;
   text-align: left;
 }

@@ -67,7 +67,12 @@ def email(request):
     subject = 'Interview!!'
     message = ' Your interview has been scheduled. We wish you best luck! '
     template = get_template('Interviews/email-template.html')
-    html_content = template.render()
+    candidate_id = request.GET.get('interview_id')
+    candidate = Interview.objects.get(id=candidate_id)
+    context = {
+        'candidate': candidate,
+    }
+    html_content = template.render(context)
     email_from = settings.EMAIL_HOST_USER
     recipient_list = ['bhatnagar.aman1998@gmail.com',]
     msg = EmailMultiAlternatives( subject, message, email_from, recipient_list )

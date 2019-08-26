@@ -51,7 +51,7 @@ input[type=text]:focus {
         <td>{{ job.JD_link }}</td>
         <td>{{ job.job_type }}</td>
         <td>{{ job.submission_deadline|date:"F d, Y" }}</td>
-        <td></td>
+        <td>{{ job.ncandidates }}</td>
         <td>
           {% if job.job_status == 'Open' %}
             <a class="btn btn-secondary btn-sm mt-1 mb-1" style="background-color:green; color:white">Open</a>

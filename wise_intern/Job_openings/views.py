@@ -5,13 +5,14 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 from .forms import JobForm
 from django.db.models import Q
+from django.db.models import Count
 
 
 # Create your views here.
 
 @login_required
 def jobs(request):
-    jobs = Jobb.objects.all().order_by('-date_posted')
+    jobs = Jobb.objects.annotate(ncandidates=Count('tracker', distinct=True)).order_by('-date_posted')
     search_term = ''
     if 'search' in request.GET:
         search_term = request.GET['search']

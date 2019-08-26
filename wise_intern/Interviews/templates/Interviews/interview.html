@@ -35,6 +35,7 @@ input[type=text]:focus {
         <th>Date</th>
         <th>Time</th>
         <th>Mode</th>
+        <th>Send email</th>
       </tr>
     </thead>
     <tbody>
@@ -48,6 +49,7 @@ input[type=text]:focus {
         <td>{{ interview.interview_date }}</td>
         <td>{{ interview.interview_time }}</td>
         <td>{{ interview.mode }}</td>
+        <td><a href="{% url 'email-page' %}?interview_id={{ interview.id }}" class="btn btn-secondary btn-sm mt-1 mb-1" style="background-color:green">Email</a></td>
       </tr>
     {% endfor %}
     </tbody>
