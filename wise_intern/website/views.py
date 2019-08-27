@@ -1,10 +1,11 @@
-from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from Candidate.models import Candidate
 from Company.models import Company
 from Job_openings.models import Jobb
 from Tracker.models import Tracker
-from django.db.models import Count
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .forms import UserUpdateForm
 
 # Create your views here.
 
@@ -27,9 +28,18 @@ def home(request):
 
 @login_required
 def profile(request):
-    context = {"profile": "active"}
+    if request.method == 'POST':
+        u_form = UserUpdateForm(request.POST, instance=request.user)
+        if u_form.is_valid():
+            u_form.save()
+            messages.success(request, f'Your account has been updated!')
+            return redirect('profile-list')
+    else:
+        u_form = UserUpdateForm(instance=request.user)
+    context = {
+        "profile": "active", 'u_form': u_form,
+    }
     return render(request, 'website/profile.html', context)
-
 
 
 

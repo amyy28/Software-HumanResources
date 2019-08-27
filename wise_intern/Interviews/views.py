@@ -9,6 +9,7 @@ from django.core.mail import EmailMultiAlternatives
 from django.template.loader import get_template
 from Tracker.models import Tracker
 from .forms import InterviewForm
+from django.db.models import Q
 
 # Create your views here.
 
@@ -18,7 +19,12 @@ def interview(request):
     search_term = ''
     if 'search' in request.GET:
         search_term = request.GET['search']
-        interviews = interviews.filter(interview_date__icontains=search_term)
+        interviews = interviews.filter(
+            Q(interview_date__icontains=search_term) |
+            Q(phone__icontains=search_term) |
+            Q(candidate__icontains=search_term) |
+            Q(client__icontains=search_term)
+        )
     context = {
         'interviews': interviews, 'search_term': search_term, 'interview': 'active'
     }

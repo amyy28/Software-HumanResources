@@ -23,6 +23,7 @@
         <th>City</th>
         <th>State</th>
         <th>Contact Person</th>
+        <th>Contact phone</th>
       </tr>
     </thead>
     <tbody>
@@ -32,6 +33,7 @@
         <td>{{ object.city }}</td>
         <td>{{ object.state }}</td>
         <td>{{ object.contact_person }}</td>
+        <td>{{ object.contact_phone }}</td>
       </tr>
     </tbody>
   </table>
@@ -42,18 +44,21 @@
   <table class="table">
     <thead>
      <tr>
-       <th>Contact phone</th>
        <th>Status</th>
         <th>Contact email</th>
         <th>Commercials</th>
+        <th>Value</th>
+        <th>CTC Type</th>
      </tr>
     </thead>
     <tbody>
       <tr>
-        <td>{{ object.contact_phone }}</td>
+
         <td>{{ object.company_status }}</td>
         <td>{{ object.contact_email }}</td>
         <td>{{ object.commercials }}</td>
+        <td>{{ object.value }}</td>
+        <td>{{ object.CTC_type }}</td>
       </tr>
     </tbody>
   </table>

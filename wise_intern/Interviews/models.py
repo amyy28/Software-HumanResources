@@ -7,7 +7,7 @@ from django.utils import timezone
 
 
 class Interview(models.Model):
-    interview_date = models.CharField(max_length=10)
+    interview_date = models.CharField(max_length=10, help_text="mm/dd/yy format")
     date_posted = models.DateTimeField(default=timezone.now)
     interview_time = models.CharField(max_length=100)
     mode = models.CharField(max_length=100)

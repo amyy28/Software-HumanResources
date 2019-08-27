@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 from Job_openings.models import Jobb
 from Candidate.models import Candidate
+from django.db.models import Q
 
 # Create your views here.
 
@@ -17,7 +18,12 @@ def tracker(request):
     search_term = ''
     if 'search' in request.GET:
         search_term = request.GET['search']
-        tracker = tracker.filter(company_applied__icontains=search_term)
+        tracker = tracker.filter(
+            Q(company_applied__company_name__icontains=search_term) |
+            Q(candidate_name__candidate_name__icontains=search_term) |
+            Q(position_applied__position__icontains=search_term) |
+            Q(phone__icontains=search_term)
+        )
     context = {
         'tracker': tracker, 'search_term': search_term, 'tracker_page': 'active',
     }
@@ -40,6 +46,7 @@ class TrackerCreateView(LoginRequiredMixin, CreateView):
             return {'candidate_name': candidate,
                     'phone': candidate.phone,
                     'email': candidate.email,
+                    'user':self.request.user,
                 }
 
     def form_valid(self, form):
