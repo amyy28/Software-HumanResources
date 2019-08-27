@@ -34,7 +34,7 @@ class Jobb(models.Model):
     #jobs = models.ForeignKey(Jobs, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.position
+        return f'{self.position} - {self.job_id}'
 
     def get_absolute_url(self):
         return reverse('job-detail', kwargs={'pk': self.pk})

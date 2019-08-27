@@ -1,7 +1,7 @@
 {% extends "website/header.html" %}
 {% block content %}
     <h1 class="container" style="text-align:center">Welcome to the dashboard, let us serve you.</h1>
- <div style="padding-top:140px; padding-left:200px">
+ <div style="padding-top:60px; padding-left:200px">
     <table style="width:80%">
   <tr>
     <th>Total Companies:</th>
@@ -21,7 +21,31 @@
   </tr>
 </table>
      </div>
-<h6 style="padding-top:160px; padding-left:850px">Made with ❤ by Wisehire.co 😃</h6>
+<div style="padding-top:40px; padding-left:200px">
+    <table style="width:80%">
+  <tr>
+    <th>Interviews Scheduled:</th>
+    <td>{{ interview_scheduled }}</td>
+  </tr>
+  <tr>
+    <th>Total Interviewed:</th>
+    <td>{{ interviewed }}</td>
+  </tr>
+   <tr>
+    <th>Total Selected:</th>
+    <td>{{ selected }}</td>
+  </tr>
+  <tr>
+    <th>Total On-Hold:</th>
+    <td>{{ onhold }}</td>
+  </tr>
+  <tr>
+    <th>Total Rejected:</th>
+    <td>{{ rejected }}</td>
+  </tr>
+</table>
+     </div>
+<h6 style="padding-top:70px; padding-left:850px">Made with ❤ by Wisehire.co 😃</h6>
 <style>
 table, th, td {
   border: 1px solid black;
