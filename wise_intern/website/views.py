@@ -7,6 +7,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import UserUpdateForm
 
+
 # Create your views here.
 
 @login_required
