@@ -16,11 +16,6 @@
         <th>Phone</th>
         <th>Email</th>
         <th>Current CTC</th>
-        <th>Expected CTC</th>
-        <th>Notice Period</th>
-        <th>Status</th>
-        <th>Relevant Experience</th>
-        <th>Total Experience</th>
       </tr>
     </thead>
     <tbody>
@@ -29,14 +24,33 @@
         <td>{{ object.candidate_name }}</td>
         <td>{{ object.company_applied }}</td>
         <td>{{ object.position_applied }}</td>
-        <td></td>
-        <td></td>
+        <td>{{ object.phone }}</td>
+        <td>{{ object.email }}</td>
         <td>{{ object.current_CTC }}</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+ <div class="container" style="padding-top:20px">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Expected CTC</th>
+        <th>Notice Period</th>
+        <th>Status</th>
+        <th>Relevant Experience</th>
+        <th>Total Experience</th>
+        <th>Vendor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
         <td>{{ object.expected_CTC }}</td>
         <td>{{ object.notice_period }}</td>
         <td>{{ object.candidate_status }}</td>
         <td>{{ object.relevant_experience }}</td>
         <td>{{ object.total_experience }}</td>
+        <td>{{ object.vendor }}</td>
       </tr>
     </tbody>
   </table>

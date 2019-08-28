@@ -37,6 +37,9 @@
               <li class="{{ job }}"><a class="nav-item nav-link" href="{% url 'jobs-list' %}">Jobs</a></li>
               <li class="{{ tracker_page }}"><a class="nav-item nav-link" href="{% url 'tracker-page' %}">Tracker</a></li>
               <li class="{{ interview }}"><a class="nav-item nav-link" href="{% url 'interview-page' %}">Interviews</a></li>
+                {% if request.user.is_superuser %}
+                    <li class="{{ vendor }}"><a class="nav-item nav-link" href="{% url 'vendor-list' %}">Vendors</a></li>
+                {% endif %}
             </div>
             <!-- Navbar Right Side -->
             <div class="navbar-nav">

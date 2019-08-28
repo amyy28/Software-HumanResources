@@ -1,0 +1,60 @@
+{% extends "website/header.html" %}
+{% block content %}
+    <h2 class="container">Here's the list of vendors!</h2>
+    <div style="padding-left:1000px">
+    <a href="{% url 'vendor-create' %}" class="btn btn-secondary btn-sm mt-1 mb-1">Add new +</a>
+    </div>
+    <div class="container" style="padding-top:20px">
+      <form action=".">
+      <input type="text" placeholder="Search.." name="search">
+    </form>
+   <style>
+  input[type=text] {
+  width: 120px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding: 8px 10px 12px 20px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+  width: 100%;
+}
+</style>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Vendor ID</th>
+        <th>Name</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Total Candidates</th>
+        <th>Selected</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for vendor in vendors %}
+      <tr>
+        <td>{{ vendor.vendor_id }}</td>
+        <td><a class="article-title" href="{% url 'vendor-detail' vendor.id %}">{{ vendor.vendor_name }}</a></td>
+        <td>{{ vendor.city }}</td>
+        <td>{{ vendor.state }}</td>
+        <td>{{ vendor.contact_phone }}</td>
+        <td>{{ vendor.contact_email }}</td>
+        <td>{{ vendor.ncandidates }}</td>
+        <td></td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+    </div>
+
+{% endblock content %}

@@ -34,7 +34,7 @@ def tracker(request):
 
 class TrackerCreateView(LoginRequiredMixin, CreateView):
     model = Tracker
-    fields = ['current_CTC', 'expected_CTC', 'notice_period', 'email','user','phone', 'company_applied', 'position_applied', 'candidate_status', 'relevant_experience', 'total_experience', 'candidate_name']
+    fields = ['current_CTC', 'expected_CTC', 'vendor', 'notice_period', 'email','user','phone', 'company_applied', 'position_applied', 'candidate_status', 'relevant_experience', 'total_experience', 'candidate_name']
 
     def get_initial(self):
         candidate_id = self.request.GET.get('candidate_id')
@@ -59,7 +59,7 @@ class TrackerDetailView(LoginRequiredMixin, DetailView):
 
 class TrackerUpdateView(LoginRequiredMixin, UpdateView):
     model = Tracker
-    fields = ['current_CTC', 'expected_CTC', 'notice_period', 'company_applied', 'phone','user', 'email', 'position_applied', 'candidate_status', 'relevant_experience', 'total_experience', 'candidate_name']
+    fields = ['current_CTC', 'expected_CTC', 'notice_period', 'vendor', 'company_applied', 'phone','user', 'email', 'position_applied', 'candidate_status', 'relevant_experience', 'total_experience', 'candidate_name']
 
     def form_valid(self, form):
         form.instance.author = self.request.user

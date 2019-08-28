@@ -46,10 +46,13 @@
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="form-group col-md-6 mb-0">
+                    <div class="form-group col-md-4 mb-0">
                         {{ form.candidate_status|as_crispy_field }}
                     </div>
-                    <div class="form-group col-md-6 mb-0">
+                    <div class="form-group col-md-4 mb-0">
+                        {{ form.vendor|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-4 mb-0">
                         {{ form.user|as_crispy_field }}
                     </div>
                 </div>

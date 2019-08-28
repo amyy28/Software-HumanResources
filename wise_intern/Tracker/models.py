@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from Candidate.models import Candidate
 from Company.models import Company
 from Job_openings.models import Jobb
+from Vendor.models import Vendor
 from django.utils import timezone
 
 # Create your models here.
@@ -27,6 +28,7 @@ class Tracker(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     candidate_name = models.ForeignKey(Candidate, on_delete=models.CASCADE, related_name='candidates')
     position_applied = models.ForeignKey(Jobb, on_delete=models.CASCADE)
+    vendor = models.ForeignKey(Vendor, on_delete=models.CASCADE)
     current_CTC = models.CharField(max_length=100)
     expected_CTC = models.CharField(max_length=100)
     notice_period = models.CharField(max_length=100)

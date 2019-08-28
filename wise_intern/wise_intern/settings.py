@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'website.apps.WebsiteConfig',
     'users.apps.UsersConfig',
+    'Vendor.apps.VendorConfig',
     'Interviews.apps.InterviewsConfig',
     'Candidate.apps.CandidateConfig',
     'Tracker.apps.TrackerConfig',

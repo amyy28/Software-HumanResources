@@ -1,0 +1,37 @@
+{% extends "website/header.html" %}
+{% block content %}
+  <div class="container">
+  <h3>{{ object.vendor_name }}</h3>
+  </div>
+  <div style="padding-left:930px">
+  <a href="{% url 'vendor-list' %}"><i class="fa fa-arrow-left" style="font-size:24px; color:grey; padding-right:20px"></i></a>
+  <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'vendor-update' object.id %}">Update</a>
+  <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'vendor-delete' object.id %}">Delete</a>
+  </div>
+  <div class="container" style="padding-top:20px">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Vendor ID</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Contact Person</th>
+        <th>Contact phone</th>
+        <th>Contact email</th>
+        <th>Commission Rate</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ object.vendor_id }}</td>
+        <td>{{ object.city }}</td>
+        <td>{{ object.state }}</td>
+        <td>{{ object.contact_person }}</td>
+        <td>{{ object.contact_phone }}</td>
+        <td>{{ object.contact_email }}</td>
+        <td>{{ object.commission_rate }}</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+{% endblock content %}

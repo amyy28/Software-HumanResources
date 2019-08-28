@@ -24,6 +24,7 @@ urlpatterns = [
     path('dashboard/interviews/', include('Interviews.urls')),
     path('dashboard/candidate/', include('Candidate.urls')),
     path('dashboard/company/', include('Company.urls')),
+    path('dashboard/vendor/', include('Vendor.urls')),
     path('dashboard/jobs/', include('Job_openings.urls')),
     path('', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
