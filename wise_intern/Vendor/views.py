@@ -13,7 +13,7 @@ from Tracker.models import Tracker
 @login_required
 @user_passes_test(lambda user: user.is_superuser)
 def vendor(request):
-    vendors = Vendor.objects.annotate(ncandidates=Count('tracker', distinct=True))
+    vendors = Vendor.objects.annotate(ncandidates=Count('tracker', distinct=True), nselected=Count('tracker', filter=Q(tracker__candidate_status='Selected'),distinct=True))
     search_term = ''
     if 'search' in request.GET:
         search_term = request.GET['search']
