@@ -4,6 +4,6 @@ A complete and fully usable website product for a company to ease out the work o
 
 # Technology Stack
 
-* Front-end - Bootstrap / Django template
+* Front-end - HTML, CSS, Bootstrap (Django template)
 * Back-end - Django framework
 * Database - PostgreSQL
