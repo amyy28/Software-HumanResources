@@ -49,7 +49,7 @@ python3 manage.py runserver
 ## Hit the below URL
 ```http://127.0.0.1:8000/```
 
-Now go to login and enter the created username and password. Once logged in, create the team by filling in the required details and then skit and presentations data can easily be loaded using the forms in the UI. 
+Enter the created username and password. Once logged in candidate, company, vendor data can easily be loaded using the forms in the UI. 
 
 ### 💁🏻 Contributing
 Any contributions and pull requests are welcomed! 
