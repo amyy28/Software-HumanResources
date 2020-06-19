@@ -4,7 +4,7 @@ A complete and fully implementable software for a company to ease out the work o
 
 # Technology Stack
 
-* Front-end - HTML, CSS, Bootstrap (Django template)
+* Front-end - HTML, CSS, Bootstrap
 * Back-end - Django framework
 * Database - PostgreSQL
 
